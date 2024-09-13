@@ -1,24 +1,18 @@
 /**Slide circle */
 
-// window.addEventListener('wheel', function() {
-//     let circleCoords = slideCircle.getBoundingClientRect().top
-//     slideCircle.style.top = window.scrollY
-// })
-
 window.addEventListener("DOMContentLoaded", () => {
   const slideCircle = document.querySelector(".slide_circle");
 
   window.addEventListener("scroll", () => {
     const container = document.querySelector(".wrapper_cont");
-    console.log(container.scrollHeight);
-    console.log(document.body.scrollHeight);
 
     let windowHeight = window.innerHeight;
     let scrollPercentage = document.body.scrollHeight / windowHeight;
     let coords = window.scrollY / scrollPercentage;
-    // if ( coords >= container.scrollHeight) {
-    //     coords = container.scrollHeight
-    // }
+
+    if (coords >= container.scrollHeight) {
+      coords = container.scrollHeight;
+    }
     slideCircle.style.top = coords + 60 + "px";
     slideCircle.style.position = "fixed";
   });
@@ -55,18 +49,6 @@ if (headerList.length > 0) {
 
 // img scroll
 
-// function imgScroll() {
-//   const imgCont = document.querySelector('.intro__images')
-//   const img = document.querySelector('.img__intro')
-
-//   window.addEventListener('scroll', function(event) {
-//       imgCont.style.height = (parseInt(imgCont.style.height) + 10) + 'px';
-//     if ( imgCont.style.height == img.clientHeight + 'px') {
-//       return
-//     }
-//   })
-// }
-// imgScroll();
 function scrollImg(event) {
   event.preventDefault();
 
@@ -80,12 +62,13 @@ function scrollImg(event) {
 
   function removeEvent() {
     if (containerHeight <= imageHeight) {
+      window.removeEventListener("touchstart", scrollImg);
       window.removeEventListener("wheel", scrollImg);
     }
   }
-
   setTimeout(removeEvent, 1000);
 }
+window.addEventListener("touchstart", scrollImg, { passive: false });
 window.addEventListener("wheel", scrollImg, { passive: false });
 
 /** Change opacity of sections with scroll*/

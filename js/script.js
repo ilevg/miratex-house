@@ -62,14 +62,12 @@ function scrollImg(event) {
 
   function removeEvent() {
     if (containerHeight <= imageHeight) {
-      window.removeEventListener("touchstart", scrollImg);
-      window.removeEventListener("wheel", scrollImg);
+      window.removeEventListener("touchmove", scrollImg);
     }
   }
   setTimeout(removeEvent, 1000);
 }
-window.addEventListener("touchstart", scrollImg, { passive: false });
-window.addEventListener("wheel", scrollImg, { passive: false });
+window.addEventListener("touchmove", scrollImg, { passive: false });
 
 /** Change opacity of sections with scroll*/
 

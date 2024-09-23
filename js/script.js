@@ -62,11 +62,13 @@ function scrollImg(event) {
 
   function removeEvent() {
     if (containerHeight <= imageHeight) {
+      window.removeEventListener("wheel", scrollImg);
       window.removeEventListener("touchmove", scrollImg);
     }
   }
   setTimeout(removeEvent, 1000);
 }
+window.addEventListener("wheel", scrollImg, { passive: false });
 window.addEventListener("touchmove", scrollImg, { passive: false });
 
 /** Change opacity of sections with scroll*/
@@ -171,17 +173,19 @@ firstButton.addEventListener("click", function () {
 secondButton.addEventListener("click", function () {
   buttonToggle(secondButton, dropdownSecond);
 });
+/** Catalog modal */
 
-///////////////////////////////////////////////////////////////////
+const catalogModalCont = document.querySelector(".catalog__modal_buy");
+const catalogModalClose = document.querySelector(".catalog__modal_close");
 
 /** Slide the catalog */
 
 let catalogButtons = document.querySelector(".catalog_buttons");
 let catalogSection = document.querySelector(".catalog__section");
 let allCatalogPages = catalogSection.querySelectorAll("[data-catalog]");
-
+console.log(catalogSection)
 catalogButtons.addEventListener("click", function (e) {
-  target = e.target.closest(".catalog__button");
+  let target = e.target.closest(".catalog__button");
   if (!target) return;
 
   allCatalogPages.forEach((page) => {
@@ -189,9 +193,7 @@ catalogButtons.addEventListener("click", function (e) {
     page.style.opacity = "0";
   });
 
-  let catalogPage = catalogSection.querySelector(
-    `[data-catalog="${target.textContent}"]`
-  );
+  let catalogPage = catalogSection.querySelector(`[data-catalog="${target.textContent.toLowerCase()}"]`);
   catalogPage.style.display = "block";
   setTimeout(() => {
     catalogPage.style.opacity = "1";

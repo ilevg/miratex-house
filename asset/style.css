@@ -400,6 +400,7 @@ body {
   background: transparent;
   padding: 0;
 }
+
 .catalog__button_second:hover {
   color: #ffffff;
   background-color: #006b94;
@@ -544,6 +545,38 @@ body {
   max-width: 600px;
   width: 100%;
   height: auto;
+}
+.catalog__modal_buy {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background-color: black;
+}
+.catalog_modal {
+  margin: 20px;
+  padding: 50px;
+  background-color: white;
+  border-radius: 50px;
+}
+.catalog__modal_close {
+  font-family: "SF Pro Display";
+  position: fixed;
+  top: 50px;
+  right: 50px;
+  opacity: 1;
+  font-size: 30px;
+}
+.catalog__modal_close:hover {
+  color: #bfbdbd;
+}
+.catalog__modal_text {
+  color: rgb(82, 82, 82);
 }
 .model_shop_img-3 {
   max-width: 400px;
@@ -1199,9 +1232,6 @@ body {
   }
   .catalog__button {
     padding: 0 24px 30px 0;
-  }
-  .catalog__button_download {
-    margin: 0 0 20px 0;
   }
   .catalog_border {
     margin: 20px 0;

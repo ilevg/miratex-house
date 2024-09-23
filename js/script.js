@@ -81,7 +81,8 @@ targetArr.forEach(function (target) {
     const targetCoordsTop = target.getBoundingClientRect().top;
     const targetCoordsBottom = target.getBoundingClientRect().bottom;
     const windowHeight = window.innerHeight;
-    const catalogButtons = document.querySelectorAll("button");
+    const catalogSection = document.querySelector(".catalog__section");
+    const catalogButtons = catalogSection.querySelectorAll("button");
     const catalogBorder = document.querySelector(".catalog_border");
     const catalogBorderSec = document.querySelector(".catalog_border_second");
     const catButton = document.querySelectorAll("[data-catbutton]");
@@ -176,14 +177,32 @@ secondButton.addEventListener("click", function () {
 /** Catalog modal */
 
 const catalogModalCont = document.querySelector(".catalog__modal_buy");
+const catalogBtnBuy = document.querySelector("#catalog_btn_buy");
 const catalogModalClose = document.querySelector(".catalog__modal_close");
+const catalogModalMess = document.querySelector(".catalog__modal_messege");
+const catalogBtnForm = document.querySelector("#catalog-form-btn");
+function buyModalOpen () {
+  catalogModalCont.style.transform = "translateX(0)";
+  catalogModalCont.style.opacity="1"
+}
+function buyModalClose () {
+  catalogModalCont.style.transform = "translateX(100vw)";
+  catalogModalCont.style.opacity="0"
+}
+function buyModalSubmit (e) {
+  e.preventDefault();
+  catalogModalMess.style.visibility="visible";
+  catalogModalMess.style.opacity="1";
+}
 
+catalogBtnBuy.addEventListener("click", buyModalOpen)
+catalogModalClose.addEventListener("click", buyModalClose)
+catalogBtnForm.addEventListener("click", buyModalSubmit)
 /** Slide the catalog */
 
 let catalogButtons = document.querySelector(".catalog_buttons");
 let catalogSection = document.querySelector(".catalog__section");
 let allCatalogPages = catalogSection.querySelectorAll("[data-catalog]");
-console.log(catalogSection)
 catalogButtons.addEventListener("click", function (e) {
   let target = e.target.closest(".catalog__button");
   if (!target) return;

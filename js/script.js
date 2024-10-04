@@ -124,8 +124,6 @@ targetArr.forEach(function (target) {
   });
 });
 
-// ////////////////////////////////////////////////////
-
 /** Load intro section */
 
 let introContent = document.querySelector(".intro__content");
@@ -148,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
   introSubtextSecond.style.animationTimingFunction = "ease-in-out";
   introSubtextSecond.style.animationFillMode = "forwards";
 });
-////////////////////////////////////////////////////////////////////////
+
 /** Use dropdown list */
 
 let firstButton = document.querySelector(".use__button_first");
@@ -198,6 +196,31 @@ function buyModalSubmit (e) {
 catalogBtnBuy.addEventListener("click", buyModalOpen)
 catalogModalClose.addEventListener("click", buyModalClose)
 catalogBtnForm.addEventListener("click", buyModalSubmit)
+
+// contact form funcs
+
+function contactFormHandle() {
+  const contactForm = document.querySelector(".contact__form_items");
+  const contactFormButtonContainer = document.querySelector(".contact__form_button_conteiner");
+
+  contactFormButtonContainer.addEventListener("click", (event) => {
+    event.preventDefault(); 
+    const inputs = contactForm.querySelectorAll("input, textarea");
+    inputs.forEach(input => input.value = "");
+
+    const message = document.createElement("p");
+    message.classList.add("success-message");
+    message.textContent = "Форма успешно отправлена!";
+    contactForm.insertBefore(message, contactFormButtonContainer);
+    setTimeout(() => {
+      message.style.opacity = "100%";
+    }, 500);
+  });
+}
+
+
+contactFormHandle()
+
 /** Slide the catalog */
 
 let catalogButtons = document.querySelector(".catalog_buttons");

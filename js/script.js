@@ -210,7 +210,7 @@ function contactFormHandle() {
 
     const message = document.createElement("p");
     message.classList.add("success-message");
-    message.textContent = "Форма успешно отправлена!";
+    message.textContent = "The form has been successfully submitted!";
     contactForm.insertBefore(message, contactFormButtonContainer);
     setTimeout(() => {
       message.style.opacity = "100%";

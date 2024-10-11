@@ -1,3 +1,27 @@
+/** Catalog modal */
+
+const catalogModalCont = document.querySelector(".catalog__modal_buy");
+const catalogBtnBuy = document.querySelector("#catalog_btn_buy");
+const catalogModalClose = document.querySelector(".catalog__modal_close");
+const catalogModalMess = document.querySelector(".catalog__modal_messege");
+const catalogBtnForm = document.querySelector("#catalog-form-btn");
+function buyModalOpen () {
+  catalogModalCont.style.transform = "translateX(0)";
+  catalogModalCont.style.opacity="1";
+}
+function buyModalClose () {
+  catalogModalCont.style.transform = "translateX(100vw)";
+  catalogModalCont.style.opacity="0"
+}
+function buyModalSubmit (e) {
+  e.preventDefault();
+  catalogModalMess.style.visibility="visible";
+  catalogModalMess.style.opacity="1";
+}
+
+catalogBtnBuy.addEventListener("click", buyModalOpen);
+catalogModalClose.addEventListener("click", buyModalClose);
+catalogBtnForm.addEventListener("click", buyModalSubmit);
 /**Slide circle */
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -172,30 +196,6 @@ firstButton.addEventListener("click", function () {
 secondButton.addEventListener("click", function () {
   buttonToggle(secondButton, dropdownSecond);
 });
-/** Catalog modal */
-
-const catalogModalCont = document.querySelector(".catalog__modal_buy");
-const catalogBtnBuy = document.querySelector("#catalog_btn_buy");
-const catalogModalClose = document.querySelector(".catalog__modal_close");
-const catalogModalMess = document.querySelector(".catalog__modal_messege");
-const catalogBtnForm = document.querySelector("#catalog-form-btn");
-function buyModalOpen () {
-  catalogModalCont.style.transform = "translateX(0)";
-  catalogModalCont.style.opacity="1"
-}
-function buyModalClose () {
-  catalogModalCont.style.transform = "translateX(100vw)";
-  catalogModalCont.style.opacity="0"
-}
-function buyModalSubmit (e) {
-  e.preventDefault();
-  catalogModalMess.style.visibility="visible";
-  catalogModalMess.style.opacity="1";
-}
-
-catalogBtnBuy.addEventListener("click", buyModalOpen)
-catalogModalClose.addEventListener("click", buyModalClose)
-catalogBtnForm.addEventListener("click", buyModalSubmit)
 
 // contact form funcs
 
